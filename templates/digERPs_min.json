@@ -29,15 +29,15 @@
                 "description": "Specific annotations about the experiment.",
                 "additionalProperties": true,
                 "required": [
-                    "exp name",
+                    "expname",
                     "eeg",
                     "subjects",
                     "procedure",
                     "data"
                 ],
                 "properties": {
-                    "exp name": {
-                        "$id": "#/properties/experiments/items/properties/exp name",
+                    "expname": {
+                        "$id": "#/properties/experiments/items/properties/expname",
                         "type": "string",
                         "title": "Name of the experiment",
                         "description": "A label of the form exp[N], where N is an integer. We suggest to keep the original paper number, otherwise add a filed \"note on name\"."
