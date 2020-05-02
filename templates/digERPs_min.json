@@ -1,0 +1,212 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "digERPsminimal",
+    "type": "object",
+    "title": "A minimal schema template for digERPs",
+    "description": "This is a minimal schema template for json annotation of scientific papers within the digERPs project.",
+    "additionalProperties": true,
+    "required": [
+        "paperid",
+        "experiments"
+    ],
+    "properties": {
+        "paperid": {
+            "$id": "#/properties/paperid",
+            "type": "string",
+            "title": "paperid",
+            "description": "The id of the annotated paper, should be [last author family name][year of publication][first page]."
+        },
+        "experiments": {
+            "$id": "#/properties/experiments",
+            "type": "array",
+            "title": "An array of Experiments",
+            "description": "Papers typically contain multiple experiments, please add an element array for each experiment, information about how to split data into experiments are refereed in the manual.",
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/experiments/items",
+                "type": "object",
+                "title": "An Experiment",
+                "description": "Specific annotations about the experiment.",
+                "additionalProperties": true,
+                "required": [
+                    "exp name",
+                    "eeg",
+                    "subjects",
+                    "procedure",
+                    "data"
+                ],
+                "properties": {
+                    "exp name": {
+                        "$id": "#/properties/experiments/items/properties/exp name",
+                        "type": "string",
+                        "title": "Name of the experiment",
+                        "description": "A label of the form exp[N], where N is an integer. We suggest to keep the original paper number, otherwise add a filed \"note on name\"."
+                    },
+                    "content": {
+                        "$id": "#/properties/experiments/items/properties/content",
+                        "type": "string",
+                        "title": "Experiment description",
+                        "description": "A brief description of the experiment aims and possibly about its role within the aims of the specific secondary research that is currently pursued."
+                    },
+                    "eeg": {
+                        "$id": "#/properties/experiments/items/properties/eeg",
+                        "type": "object",
+                        "title": "EEG section",
+                        "description": "A collection of information about EEG recording and the analysis pipeline for ERPs extraction.",
+                        "additionalProperties": true,
+                        "required": [
+                            "sites"
+                        ],
+                        "properties": {
+                            "sites": {
+                                "$id": "#/properties/experiments/items/properties/eeg/properties/sites",
+                                "type": "array",
+                                "title": "Recorded Sites",
+                                "description": "An array of strings with the labels of the recorded EEG sites/channels .",
+                                "additionalItems": true,
+                                "items": {
+                                    "$id": "#/properties/experiments/items/properties/eeg/properties/sites/items",
+                                    "type": "string",
+                                    "title": "Channel/site label",
+                                    "description": "Label of the channel/site."
+                                }
+                            }
+                        }
+                    },
+                    "subjects": {
+                        "$id": "#/properties/experiments/items/properties/subjects",
+                        "type": "array",
+                        "title": "Subject Groups section",
+                        "description": "An array with information about the groups of subjects tested.",
+                        "additionalItems": true,
+                        "items": {
+                            "$id": "#/properties/experiments/items/properties/subjects/items",
+                            "type": "object",
+                            "title": "A group of subjects",
+                            "description": "An explanation about the purpose of this instance.",
+                            "additionalProperties": true,
+                            "required": [
+                                "groupname"
+                            ],
+                            "properties": {
+                                "groupname": {
+                                    "$id": "#/properties/experiments/items/properties/subjects/items/properties/groupname",
+                                    "type": "string",
+                                    "title": "Group label",
+                                    "description": "A short and possibly informative label of the group of subjects"
+                                }
+                            }
+                        }
+                    },
+                    "procedure": {
+                        "$id": "#/properties/experiments/items/properties/procedure",
+                        "type": "object",
+                        "title": "Experimental Procedure Section",
+                        "description": "A collection of information about the experimental procedure, including stimuli and behavioural tasks.",
+                        "additionalProperties": true,
+                        "required": [
+                            "conditions"
+                        ],
+                        "properties": {
+                            "conditions": {
+                                "$id": "#/properties/experiments/items/properties/procedure/properties/conditions",
+                                "type": "array",
+                                "title": "Experimental Conditions",
+                                "description": "An array with information about the tested experimental conditions.",
+                                "additionalItems": true,
+                                "items": {
+                                    "$id": "#/properties/experiments/items/properties/procedure/properties/conditions/items",
+                                    "type": "object",
+                                    "title": "An Experimental Condition",
+                                    "description": "A collection of informations about a specific experimental condition.",
+                                    "additionalProperties": true,
+                                    "required": [
+                                        "condname"
+                                    ],
+                                    "properties": {
+                                        "condname": {
+                                            "$id": "#/properties/experiments/items/properties/procedure/properties/conditions/items/properties/condname",
+                                            "type": "string",
+                                            "title": "Condition label",
+                                            "description": "A short and possibly informative label of the experimental condition."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "data": {
+                        "$id": "#/properties/experiments/items/properties/data",
+                        "type": "array",
+                        "title": "Data section",
+                        "description": "An array of entries corresponding to plotted waveforms with information about where these can be found.",
+                        "additionalItems": true,
+                        "items": {
+                            "$id": "#/properties/experiments/items/properties/data/items",
+                            "type": "object",
+                            "title": "Waveforms",
+                            "description": "Information relative to a group of waveforms pertaining to a pool of sites/channel but to a signle condition and group of subjects. Sites will be a subset of the above field in the EEG section, otherwise add a field \"note",
+                            "additionalProperties": true,
+                            "required": [
+                                "condition",
+                                "subjects",
+                                "time",
+                                "figure"
+                            ],
+                            "properties": {
+                                "condition": {
+                                    "$id": "#/properties/experiments/items/properties/data/items/properties/condition",
+                                    "type": "string",
+                                    "title": "Condition label",
+                                    "description": "An Condition label instantiated above in the Procedure section."
+                                },
+                                "subjects": {
+                                        "$id": "#/properties/experiments/items/properties/data/items/properties/subjects",
+                                        "type": "string",
+                                        "title": "Group label",
+                                        "description": "An Subject Group label instantiated above in the Procedure section."
+                                    },
+                                "time": {
+                                    "$id": "#/properties/experiments/items/properties/data/items/properties/time",
+                                    "type": "string",
+                                    "title": "Time Range",
+                                    "description": "The (maximum) time range of the plotted data,  should be in the form \"MIN, MAX\"."
+                                },
+                                "figure": {
+                                    "$id": "#/properties/experiments/items/properties/data/items/properties/figure",
+                                    "type": "string",
+                                    "title": "Figure label",
+                                    "description": "A short label for the  figure from which the specific waveform should be extracted. Should be in the form \"fig[N][A]\", where N  in an integer and A an optional letter (e.g. \"fig1A\").  This label should match both the description in the paper and the name of the image file to be used for the digitalization (e.g \"fig1A.png\"."
+                                },
+                                "figuredoi": {
+                                    "$id": "#/properties/experiments/items/properties/data/items/properties/figuredoi",
+                                    "type": "string",
+                                    "title": "Figure doi",
+                                    "description": "A doi for the specific figure,  if available."
+                                },
+                                "page": {
+                                    "$id": "#/properties/experiments/items/properties/data/items/properties/page",
+                                    "type": "string",
+                                    "title": "Page number",
+                                    "description": "The number of the page in which the figure appears."
+                                },
+                                "color": {
+                                    "$id": "#/properties/experiments/items/properties/data/items/properties/color",
+                                    "type": "string",
+                                    "title": "Line Color",
+                                    "description": "A verbal description of the color in which the waveform appears in the plot."
+                                },
+                                "type": {
+                                    "$id": "#/properties/experiments/items/properties/data/items/properties/type",
+                                    "type": "string",
+                                    "title": "Line  Type",
+                                    "description": "A verbal description of the graphic type of the line (e.g. continuous, dashed, dotted ...)."
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
