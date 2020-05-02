@@ -145,7 +145,7 @@
                             "$id": "#/properties/experiments/items/properties/data/items",
                             "type": "object",
                             "title": "Waveforms",
-                            "description": "Information relative to a group of waveforms pertaining to a pool of sites/channel but to a signle condition and group of subjects. Sites will be a subset of the above field in the EEG section, otherwise add a field \"note",
+                            "description": "Information relative to a group of waveforms pertaining to a pool of sites/channel but to a signle condition and group of subjects. Sites will be a subset of the above field in the eeg section, otherwise add a field \"note on sites\"",
                             "additionalProperties": true,
                             "required": [
                                 "condition",
@@ -158,13 +158,13 @@
                                     "$id": "#/properties/experiments/items/properties/data/items/properties/condition",
                                     "type": "string",
                                     "title": "Condition label",
-                                    "description": "An Condition label instantiated above in the Procedure section."
+                                    "description": "An Condition label instantiated above in the procedure section."
                                 },
                                 "subjects": {
                                         "$id": "#/properties/experiments/items/properties/data/items/properties/subjects",
                                         "type": "string",
                                         "title": "Group label",
-                                        "description": "An Subject Group label instantiated above in the Procedure section."
+                                        "description": "An Subject Group label instantiated above in the subjects section."
                                     },
                                 "time": {
                                     "$id": "#/properties/experiments/items/properties/data/items/properties/time",
