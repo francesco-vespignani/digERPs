@@ -63,6 +63,7 @@
                             "mean rejected",
                             "sites nomenclature",
                             "sites",
+                            "standard sites",
                             "baseline",
                             "epoch",
                             "hardware",
@@ -128,7 +129,8 @@
                                     "type": "string",
                                     "title": "Channel/site label",
                                     "description": "Label of the channel/site."
-                                },
+                                }
+                            },
                             "standard sites": {
                                 "$id": "#/properties/experiments/items/properties/eeg/properties/standard%20sites",
                                 "type": "array",
@@ -165,7 +167,6 @@
                                 "type": "boolean",
                                 "title": "Active electrodes",
                                 "description": "Active electrodes  were used (true/false)"
-                            }
                             }
                         }
                     },
@@ -222,7 +223,7 @@
                                     "description": " The number of females in the sample,  put -1 if the information is not provided."
                                 },
                                 "language(s) spoken": {
-                                    "$id": "#/properties/experiments/items/properties/subjects/items/properties/language(s) spoken",
+                                    "$id": "#/properties/experiments/items/properties/subjects/items/properties/language(s)%20spoken",
                                     "type": "string",
                                     "title": "Language(s) spoken",
                                     "description": "First language of the subjects and possible information about further other language known, when provided."
