@@ -146,13 +146,13 @@
                                 "$id": "#/properties/experiments/items/properties/eeg/properties/baseline",
                                 "type": "string",
                                 "title": "Baseline",
-                                "description": "The interval used for the baseline of the ERPs with reference to the onset of the critical word. It should in the form \"MIN, MAX\" [in ms]. In the case different baselines are used for different conditions or target words please add a field \"note on baseline\"."
+                                "description": "The interval used for the baseline of the ERPs with reference to the onset of the critical word. It should in the form \"MIN, MAX\" in ms. In the case different baselines are used for different conditions or target words please add a field \"note on baseline\"."
                             },
                             "epoch": {
                                 "$id": "#/properties/experiments/items/properties/eeg/properties/epoch",
                                 "type": "string",
                                 "title": "Epoch inteval",
-                                "description": "The epochs used of the ERPs extraction (may be larger than the plotted once, see below) with reference to the onset of the critical word. It should in the form \"MIN, MAX\" [in ms]. In the case different epochs are used for different conditions or target words please add a field \"note on epoch\"."
+                                "description": "The epochs used of the ERPs extraction (may be larger than the plotted once, see below) with reference to the onset of the critical word. It should in the form \"MIN, MAX\" in ms. In the case different epochs are used for different conditions or target words please add a field \"note on epoch\"."
                             },
                             "hardware": {
                                 "$id": "#/properties/experiments/items/properties/eeg/properties/hardware",
@@ -164,7 +164,7 @@
                                 "$id": "#/properties/experiments/items/properties/eeg/properties/active%20electrodes",
                                 "type": "boolean",
                                 "title": "Active electrodes",
-                                "description": "Active electrodes  were used?"
+                                "description": "Active electrodes  were used (true/false)"
                             }
                             }
                         }
@@ -182,7 +182,13 @@
                             "description": "A collection of relevant information about a single group of subjects.",
                             "additionalProperties": true,
                             "required": [
-                                "groupname"
+                                "groupname",
+                                "n",
+                                "mean age",
+                                "age range",
+                                "num of females",
+                                "language(s) spoken",
+                                "descrirption"
                             ],
                             "properties": {
                                 "groupname": {
@@ -190,6 +196,42 @@
                                     "type": "string",
                                     "title": "A label for this group",
                                     "description": "A short and possibly informative label of the group of subjects"
+                                },
+                                "n": {
+                                    "$id": "#/properties/experiments/items/properties/subjects/items/properties/n",
+                                    "type": "integer",
+                                    "title": "Number of subjects",
+                                    "description": "An integer: the number of subject included in the final analysis. Put -1 if the information is not provided. If different subjects were used for different conditions or target words please add a field \"note on n\""
+                                },
+                                "mean age": {
+                                    "$id": "#/properties/experiments/items/properties/subjects/items/properties/mean%20age",
+                                    "type": "number",
+                                    "title": "Mean age",
+                                    "description": "Mean age of this group of subject in years. Put -1 if not provided."
+                                },
+                                "age range": {
+                                    "$id": "#/properties/experiments/items/properties/subjects/items/properties/age%20range",
+                                    "type": "string",
+                                    "title": "Age range",
+                                    "description": "Age range in the form \"MIN, MAX\" in years, leave empty if not provided."
+                                },
+                                "num of females": {
+                                    "$id": "#/properties/experiments/items/properties/subjects/items/properties/num%20of%20females",
+                                    "type": "integer",
+                                    "title": "Number of females",
+                                    "description": " The number of females in the sample,  put -1 if the information is not provided."
+                                },
+                                "language(s) spoken": {
+                                    "$id": "#/properties/experiments/items/properties/subjects/items/properties/language(s) spoken",
+                                    "type": "string",
+                                    "title": "Language(s) spoken",
+                                    "description": "First language of the subjects and possible information about further other language known, when provided."
+                                },
+                                "description": {
+                                    "$id": "#/properties/experiments/items/properties/subjects/items/properties/descrirption",
+                                    "type": "string",
+                                    "title": "Group Descrirption",
+                                    "description": "Report other information reported about the group (e.g. about vision, hearing capability, cognitive and neurological state)."
                                 }
                             }
                         }
@@ -201,9 +243,51 @@
                         "description": "A collection of information about the experimental procedure, including stimuli and behavioural tasks.",
                         "additionalProperties": true,
                         "required": [
+                            "language",
+                            "modality",
+                            "task",
+                            "lists",
+                            "word duration",
+                            "woa",
                             "conditions"
                         ],
                         "properties": {
+                            "language": {
+                                "$id": "#/properties/experiments/items/properties/procedure/properties/language",
+                                "type": "string",
+                                "title": "The language schema",
+                                "description": "An explanation about the purpose of this instance."
+                            },
+                            "modality": {
+                                "$id": "#/properties/experiments/items/properties/procedure/properties/modality",
+                                "type": "string",
+                                "title": "The modality schema",
+                                "description": "An explanation about the purpose of this instance."
+                            },
+                            "task": {
+                                "$id": "#/properties/experiments/items/properties/procedure/properties/task",
+                                "type": "string",
+                                "title": "The task schema",
+                                "description": "An explanation about the purpose of this instance."
+                            },
+                            "lists": {
+                                "$id": "#/properties/experiments/items/properties/procedure/properties/lists",
+                                "type": "string",
+                                "title": "The lists schema",
+                                "description": "An explanation about the purpose of this instance."
+                            },
+                            "word duration": {
+                                "$id": "#/properties/experiments/items/properties/procedure/properties/word%20duration",
+                                "type": "integer",
+                                "title": "The word duration schema",
+                                "description": "An explanation about the purpose of this instance."
+                            },
+                            "woa": {
+                                "$id": "#/properties/experiments/items/properties/procedure/properties/woa",
+                                "type": "string",
+                                "title": "The woa schema",
+                                "description": "An explanation about the purpose of this instance."
+                            },
                             "conditions": {
                                 "$id": "#/properties/experiments/items/properties/procedure/properties/conditions",
                                 "type": "array",
