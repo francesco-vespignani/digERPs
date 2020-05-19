@@ -136,10 +136,10 @@
                                 "description": "In the case the paper does not use the standard nomenclature 5 per cent (or a subset of it like the 10-20) for each of the sites listed above the closest site in the 5 per cent standard should be provided. Otherwise leave this array empty.",
                                 "additionalItems": true,
                                 "items": {
-                                    "$id": "#/properties/experiments/items/properties/eeg/properties/sites%205%/items",
+                                    "$id": "#/properties/experiments/items/properties/eeg/properties/standard%20sites/items",
                                     "type": "string",
-                                    "title": "Channel/site label",
-                                    "description": "Label of the channel/site."
+                                    "title": "Channel/site standard label",
+                                    "description": "Standard label of the channel/site."
                                 }
                             },
                             "baseline": {
