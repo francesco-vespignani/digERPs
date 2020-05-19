@@ -130,10 +130,10 @@
                                     "description": "Label of the channel/site."
                                 },
                             "standard sites": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/standard sites",
+                                "$id": "#/properties/experiments/items/properties/eeg/properties/standard%20sites",
                                 "type": "array",
                                 "title": "Standard sites",
-                                "description": "In the case the paper does not use the standard nomenclature 5% (or a subset of it like the 10-20)for each of the sites listed above the closest site in the 5% standard should be provided. Otherwise leave this array empty.",
+                                "description": "In the case the paper does not use the standard nomenclature 5\\% (or a subset of it like the 10-20)for each of the sites listed above the closest site in the 5\\% standard should be provided. Otherwise leave this array empty.",
                                 "additionalItems": true,
                                 "items": {
                                     "$id": "#/properties/experiments/items/properties/eeg/properties/sites%205%/items",
