@@ -189,7 +189,7 @@
                                 "age range",
                                 "num of females",
                                 "language(s) spoken",
-                                "descrirption"
+                                "description"
                             ],
                             "properties": {
                                 "groupname": {
