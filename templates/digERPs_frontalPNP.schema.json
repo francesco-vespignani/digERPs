@@ -79,49 +79,49 @@
                                 "$id": "#/properties/experiments/items/properties/eeg/properties/analysis%20reference",
                                 "type": "string",
                                 "title": "Analysis reference",
-                                "description": "Describe the analysis reference in the case a rereference was done otherwise omit this field."
+                                "description": "Describe the analysis reference in the case a rereference was done otherwise leave this field blank."
                             },
                             "sampling rate": {
                                 "$id": "#/properties/experiments/items/properties/eeg/properties/sampling%20rate",
-                                "type": "integer",
+                                "type": "number",
                                 "title": "Sampling rate",
-                                "description": "Samplig rate of the EEG recording in Hz (number of measure per second)."
+                                "description": "Samplig rate of the EEG recording in Hz (number of EEG measures per second)."
                             },
                             "final Low Pass": {
                                 "$id": "#/properties/experiments/items/properties/eeg/properties/final%20Low%20Pass",
-                                "type": "integer",
+                                "type": "number",
                                 "title": "Final Low Pass filter",
-                                "description": "An explanation about the purpose of this instance."
+                                "description": "The cutoff frequency in Hz of the more severe low pass filter applied to the data prior to the plot."
                             },
                             "final High Pass": {
                                 "$id": "#/properties/experiments/items/properties/eeg/properties/final%20High%20Pass",
-                                "type": "integer",
-                                "title": "The final High Pass schema",
-                                "description": "An explanation about the purpose of this instance."
+                                "type": "number",
+                                "title": "The final High Pass filter",
+                                "description": "The cutoff frequency in Hz of the more severe high pass filter applied to the data prior to the plot."
                             },
                             "epoch rejection": {
                                 "$id": "#/properties/experiments/items/properties/eeg/properties/epoch%20rejection",
                                 "type": "string",
-                                "title": "The epoch rejection schema",
-                                "description": "An explanation about the purpose of this instance."
+                                "title": "Epoch rejection method",
+                                "description": "A verbal description of the way the epoch rejection was performed: can be any of \"manual\", \"automatic\"or \"semiautomatic\" or it can be also a more in depth description including the specific parameters used in the procedure."
                             },
                             "mean rejected": {
                                 "$id": "#/properties/experiments/items/properties/eeg/properties/mean%20rejected",
-                                "type": "integer",
-                                "title": "The mean rejected schema",
-                                "description": "An explanation about the purpose of this instance."
+                                "type": "number",
+                                "title": "Mean rejected",
+                                "description": "The proportion of trials removed by the artifact rejection procedure (across different conditions), should be a number between 0 and 1."
                             },
-                            "sites numenclature": {
+                            "sites nomenclature": {
                                 "$id": "#/properties/experiments/items/properties/eeg/properties/sites%20numenclature",
                                 "type": "string",
-                                "title": "The sites numenclature schema",
-                                "description": "An explanation about the purpose of this instance."
+                                "title": "Sites nomenclature",
+                                "description": "A description of the standard used to label the channel/sites. In case of non standard sites put \"custom\" and add a filed \"note on sites\" with the original description of the position of the electrodes should be provided."
                             },
                             "sites": {
                                 "$id": "#/properties/experiments/items/properties/eeg/properties/sites",
                                 "type": "array",
                                 "title": "Recorded Sites",
-                                "description": "An array of strings with the labels of the recorded EEG sites/channels .",
+                                "description": "An array of strings with the labels used in the paper figures of the recorded EEG sites/channels.",
                                 "additionalItems": true,
                                 "items": {
                                     "$id": "#/properties/experiments/items/properties/eeg/properties/sites/items",
@@ -130,47 +130,41 @@
                                     "description": "Label of the channel/site."
                                 },
                             "sites 5%": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/sites%205%",
+                                "$id": "#/properties/experiments/items/properties/eeg/properties/sites%205%25",
                                 "type": "array",
-                                "title": "The sites 5% schema",
-                                "description": "An explanation about the purpose of this instance.",
+                                "title": "Sites 5%",
+                                "description": "In the case the paper does not use the standard nomenclature 5% (or a subset of it like the 10-20)for each of the sites listed above the closest site in the 5% standard should be provided. Otherwise leave this array empty.",
                                 "additionalItems": true,
                                 "items": {
                                     "$id": "#/properties/experiments/items/properties/eeg/properties/sites%205%/items",
                                     "type": "string",
-                                    "title": "The items schema",
-                                    "description": "An explanation about the purpose of this instance."
+                                    "title": "Channel/site label",
+                                    "description": "Label of the channel/site."
                                 }
-                            },
-                            "sites notes": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/sites%20notes",
-                                "type": "string",
-                                "title": "The sites notes schema",
-                                "description": "An explanation about the purpose of this instance."
                             },
                             "baseline": {
                                 "$id": "#/properties/experiments/items/properties/eeg/properties/baseline",
                                 "type": "string",
-                                "title": "The baseline schema",
-                                "description": "An explanation about the purpose of this instance."
+                                "title": "Baseline",
+                                "description": "The interval used for the baseline of the ERPs with reference to the onset of the critical word. It should in the form \"MIN, MAX\" [in ms]. In the case different baselines are used for different conditions or target words please add a field \"note on baseline\"."
                             },
                             "epoch": {
                                 "$id": "#/properties/experiments/items/properties/eeg/properties/epoch",
-                                "type": "integer",
-                                "title": "The epoch schema",
-                                "description": "An explanation about the purpose of this instance."
+                                "type": "string",
+                                "title": "Epoch inteval",
+                                "description": "The epochs used of the ERPs extraction (may be larger than the plotted once, see below) with reference to the onset of the critical word. It should in the form \"MIN, MAX\" [in ms]. In the case different epochs are used for different conditions or target words please add a field \"note on epoch\"."
                             },
                             "hardware": {
                                 "$id": "#/properties/experiments/items/properties/eeg/properties/hardware",
                                 "type": "string",
-                                "title": "The hardware schema",
-                                "description": "An explanation about the purpose of this instance."
+                                "title": "Hardware",
+                                "description": "A description of the EEG system used (recording device and optionally recording software)."
                             },
                             "active electrodes": {
                                 "$id": "#/properties/experiments/items/properties/eeg/properties/active%20electrodes",
-                                "type": "string",
-                                "title": "The active electrodes schema",
-                                "description": "An explanation about the purpose of this instance."
+                                "type": "boolean",
+                                "title": "Active electrodes",
+                                "description": "Active electrodes  were used?"
                             }
                             }
                         }
