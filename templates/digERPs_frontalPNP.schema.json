@@ -70,49 +70,49 @@
                         ],
                         "properties": {
                             "recording reference": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/recording reference",
+                                "$id": "#/properties/experiments/items/properties/eeg/properties/recording%20reference",
                                 "type": "string",
                                 "title": "Recording reference",
                                 "description": "The EEG site used for reference electrode during recording (typical value are left/right/linked mastoids, average, Cz)."
                             },
                             "analysis reference": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/analysis reference",
+                                "$id": "#/properties/experiments/items/properties/eeg/properties/analysis%20reference",
                                 "type": "string",
                                 "title": "Analysis reference",
                                 "description": "Describe the analysis reference in the case a rereference was done otherwise omit this field."
                             },
                             "sampling rate": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/sampling rate",
+                                "$id": "#/properties/experiments/items/properties/eeg/properties/sampling%20rate",
                                 "type": "integer",
                                 "title": "Sampling rate",
                                 "description": "Samplig rate of the EEG recording in Hz (number of measure per second)."
                             },
                             "final Low Pass": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/final Low Pass",
+                                "$id": "#/properties/experiments/items/properties/eeg/properties/final%20Low%20Pass",
                                 "type": "integer",
                                 "title": "Final Low Pass filter",
                                 "description": "An explanation about the purpose of this instance."
                             },
                             "final High Pass": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/final High Pass",
+                                "$id": "#/properties/experiments/items/properties/eeg/properties/final%20High%20Pass",
                                 "type": "integer",
                                 "title": "The final High Pass schema",
                                 "description": "An explanation about the purpose of this instance."
                             },
                             "epoch rejection": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/epoch rejection",
+                                "$id": "#/properties/experiments/items/properties/eeg/properties/epoch%20rejection",
                                 "type": "string",
                                 "title": "The epoch rejection schema",
                                 "description": "An explanation about the purpose of this instance."
                             },
                             "mean rejected": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/mean rejected",
+                                "$id": "#/properties/experiments/items/properties/eeg/properties/mean%20rejected",
                                 "type": "integer",
                                 "title": "The mean rejected schema",
                                 "description": "An explanation about the purpose of this instance."
                             },
                             "sites numenclature": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/sites numenclature",
+                                "$id": "#/properties/experiments/items/properties/eeg/properties/sites%20numenclature",
                                 "type": "string",
                                 "title": "The sites numenclature schema",
                                 "description": "An explanation about the purpose of this instance."
@@ -130,20 +130,20 @@
                                     "description": "Label of the channel/site."
                                 },
                             "sites 5%": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/sites 5%",
+                                "$id": "#/properties/experiments/items/properties/eeg/properties/sites%205%",
                                 "type": "array",
                                 "title": "The sites 5% schema",
                                 "description": "An explanation about the purpose of this instance.",
                                 "additionalItems": true,
                                 "items": {
-                                    "$id": "#/properties/experiments/items/properties/eeg/properties/sites 5%/items",
+                                    "$id": "#/properties/experiments/items/properties/eeg/properties/sites%205%/items",
                                     "type": "string",
                                     "title": "The items schema",
                                     "description": "An explanation about the purpose of this instance."
                                 }
                             },
                             "sites notes": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/sites notes",
+                                "$id": "#/properties/experiments/items/properties/eeg/properties/sites%20notes",
                                 "type": "string",
                                 "title": "The sites notes schema",
                                 "description": "An explanation about the purpose of this instance."
@@ -167,7 +167,7 @@
                                 "description": "An explanation about the purpose of this instance."
                             },
                             "active electrodes": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/active electrodes",
+                                "$id": "#/properties/experiments/items/properties/eeg/properties/active%20electrodes",
                                 "type": "string",
                                 "title": "The active electrodes schema",
                                 "description": "An explanation about the purpose of this instance."
