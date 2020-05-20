@@ -1,5 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/francesco-vespignani/digERPs/master/templates/digERPs_frontalPNP.schema.json",
     "type": "object",
     "title": "A schema template for the systematic review frontalPNP",
     "description": "This is a proof of concept aimed to digitalize papers in table 2 of the paper by Van Petten and Luka (2012) Int. Jou. of Psychophy. 83, 176–190. In this review a number of ERPs papers on sentence processing are considered by looking at contrasts between higher- and lower-cloze congruent sentence completions.",
@@ -269,7 +270,13 @@
                                 "$id": "#/properties/experiments/items/properties/procedure/properties/task",
                                 "type": "string",
                                 "title": "Requested task",
-                                "description": "The behavioral task which subjects were requested to perform, typical values are: \"silent reading\", \"reading for comprhension\", \"comprehension questions\", \"word monitoring\"."
+                                "description": "The behavioral task which subjects were requested to perform.",
+                                "examples": [
+                                    "silent reading", 
+                                    "reading for comprhension", 
+                                    "comprehension questions", 
+                                    "word monitoring"
+                                ]
                             },
                             "lists": {
                                 "$id": "#/properties/experiments/items/properties/procedure/properties/lists",
@@ -279,15 +286,13 @@
                             },
                             "word duration": {
                                 "$id": "#/properties/experiments/items/properties/procedure/properties/word%20duration",
-                                "type": "string",
                                 "title": "Word duration",
-                                "description": "The time in ms for which the words were presented. In case the duration was variable a textual description of duration estimates (e.g. mean minimum, maximum) can  be provided."
+                                "description": "The time in ms for which the words were presented as a number. In case the duration was variable a textual description of duration estimates (e.g. mean minimum, maximum) can  be provided."
                             },
                             "woa": {
                                 "$id": "#/properties/experiments/items/properties/procedure/properties/woa",
-                                "type": "string",
                                 "title": "Word Onset Asyncrony",
-                                "description": "The time in ms that occured between the onset of a word and the onset of t0he following word (e.g. word duration plus interstimulus interval)."
+                                "description": "The time in ms that occured between the onset of a word and the onset of the following word (e.g. word duration plus interstimulus interval) as a number. In case it is variable provide a description string."
                             },
                             "conditions": {
                                 "$id": "#/properties/experiments/items/properties/procedure/properties/conditions",
@@ -319,9 +324,8 @@
                                         ,
                                         "cp": {
                                             "$id": "#/properties/experiments/items/properties/procedure/properties/conditions/items/properties/cp",
-                                            "type": "string",
                                             "title": "Cloze Probability",
-                                            "description": "The average cloze probability of the items in this condition, if available. In case an upper bound of the cloze probability is provided put this with a trailing minor sign (e.g. \"<0.05\"). A \"note on cp\" field can be added to give more information about how cp was estimated (e.g. number of participants in the pre-test) and possible measures of cp variability across items."
+                                            "description": "Fill with a number if the average cloze probability of the items in this condition, if available. In case an upper bound of the cloze probability is provided put this with a trailing minor sign (e.g. \"<0.05\"). A \"note on cp\" field can be added to give more information about how cp was estimated (e.g. number of participants in the pre-test) and possible measures of cp variability across items."
                                         },
                                         "items": {
                                             "$id": "#/properties/experiments/items/properties/procedure/properties/conditions/items/properties/items",
