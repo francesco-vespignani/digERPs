@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/francesco-vespignani/digERPs/master/templates/digERPs_frontalPNP.schema.json",
+  "paperid": "",
+  "experiments": [
+    {
+      "expname": "",
+      "content": "",
+      "eeg": {
+        "recording reference": "",
+        "analysis reference": "",
+        "sampling rate": 0,
+        "final Low Pass": 0,
+        "final High Pass": 0,
+        "epoch rejection": "",
+        "mean rejected": 0,
+        "sites nomenclature": "",
+        "sites": [ "", ""],
+        "sites 5%": ["", ""],
+        "baseline": "",
+        "epoch": "",
+        "hardware": "",
+        "active electrodes": false
+      },
+      "subjects": [
+        {
+          "groupname": "",
+          "n": -1,
+          "mean age": -1,
+          "age range": "",
+          "num of females": -1,
+          "language(s) spoken": "",
+          "description": ""
+        }
+      ],
+      "procedure": {
+        "language": "",
+        "modality": "",
+        "task": "",
+        "lists": "",
+        "word duration": 0,
+        "woa": "",
+        "conditions": [
+          {
+            "condname": "",
+            "cp": "",
+            "items": "",
+            "description": "",
+            "example":"",
+            "wp": ""
+          }
+        ]
+      },
+      "data": [
+        {
+          "condition": "",
+          "subjects": "",
+          "time": "",
+          "figure": "",
+          "figuredoi": "",
+          "page": "",
+          "color": "",
+          "type": ""
+        }
+      ]
+    }
+  ]
+}

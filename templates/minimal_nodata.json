@@ -1,0 +1,37 @@
+{
+  "$schema" : "https://raw.githubusercontent.com/francesco-vespignani/digERPs/master/templates/digERPs_minimal.schema.json",
+  "paperid": "",
+  "experiments": [
+    {
+      "expname": "",
+      "content": "",
+      "eeg": {
+        "sites": [ "", ""]
+      },
+      "subjects": [
+        {
+          "groupname": ""
+        }
+      ],
+      "procedure": {
+        "conditions": [
+          {
+            "condname": ""
+          }
+        ]
+      },
+      "data": [
+        {
+          "condition": "",
+          "subjects": "",
+          "time": "",
+          "figure": "",
+		"figuredoi": "",
+          "page": "",
+          "color": "",
+          "type": ""
+        }
+      ]
+    }
+  ]
+}

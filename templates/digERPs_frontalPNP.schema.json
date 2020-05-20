@@ -63,7 +63,7 @@
                             "mean rejected",
                             "sites nomenclature",
                             "sites",
-                            "standard sites",
+                            "sites 5%",
                             "baseline",
                             "epoch",
                             "hardware",
@@ -131,10 +131,10 @@
                                     "description": "Label of the channel/site."
                                 }
                             },
-                            "standard sites": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/standard%20sites",
+                            "sites 5%": {
+                                "$id": "#/properties/experiments/items/properties/eeg/properties/sites%205%25",
                                 "type": "array",
-                                "title": "Standard sites",
+                                "title": "Sites 5%",
                                 "description": "In the case the paper does not use the standard nomenclature 5 per cent (or a subset of it like the 10-20) for each of the sites listed above the closest site in the 5 per cent standard should be provided. Otherwise leave this array empty.",
                                 "additionalItems": true,
                                 "items": {
@@ -154,7 +154,7 @@
                                 "$id": "#/properties/experiments/items/properties/eeg/properties/epoch",
                                 "type": "string",
                                 "title": "Epoch inteval",
-                                "description": "The epochs used of the ERPs extraction (may be larger than the plotted once, see below) with reference to the onset of the critical word. It should in the form \"MIN, MAX\" in ms. In the case different epochs are used for different conditions or target words please add a field \"note on epoch\"."
+                                "description": "The epochs used of the ERPs extraction (may be larger than the plotted ones, time range plotted is reported in the data section) with reference to the onset of the critical word. It should in the form \"MIN, MAX\" in ms. In the case different epochs are used for different conditions or target words please add a field \"note on epoch\"."
                             },
                             "hardware": {
                                 "$id": "#/properties/experiments/items/properties/eeg/properties/hardware",
@@ -220,7 +220,7 @@
                                     "$id": "#/properties/experiments/items/properties/subjects/items/properties/num%20of%20females",
                                     "type": "integer",
                                     "title": "Number of females",
-                                    "description": " The number of females in the sample,  put -1 if the information is not provided."
+                                    "description": "The number of females in the sample,  put -1 if the information is not provided."
                                 },
                                 "language(s) spoken": {
                                     "$id": "#/properties/experiments/items/properties/subjects/items/properties/language(s)%20spoken",
@@ -256,38 +256,39 @@
                             "language": {
                                 "$id": "#/properties/experiments/items/properties/procedure/properties/language",
                                 "type": "string",
-                                "title": "The language schema",
-                                "description": "An explanation about the purpose of this instance."
+                                "title": "Language of the stimuli",
+                                "description": "The language of the sentences or words presented to subjects during the experiment."
                             },
                             "modality": {
                                 "$id": "#/properties/experiments/items/properties/procedure/properties/modality",
                                 "type": "string",
-                                "title": "The modality schema",
-                                "description": "An explanation about the purpose of this instance."
+                                "title": "Presentation modality",
+                                "description": "Modality of presentation of the stimuli, may be \"auditory\",  \"visual\" or \"unknown\".",
+                                "enum": ["auditory", "visual", "unknown"]
                             },
                             "task": {
                                 "$id": "#/properties/experiments/items/properties/procedure/properties/task",
                                 "type": "string",
-                                "title": "The task schema",
-                                "description": "An explanation about the purpose of this instance."
+                                "title": "Requested task",
+                                "description": "The behavioral task which subjects were requested to perform, typical values are: \"silent reading\", \"reading for comprhension\", \"comprehension questions\", \"word monitoring\"."
                             },
                             "lists": {
                                 "$id": "#/properties/experiments/items/properties/procedure/properties/lists",
                                 "type": "string",
-                                "title": "The lists schema",
-                                "description": "An explanation about the purpose of this instance."
+                                "title": "Lists",
+                                "description": "A textual description of the type of counterbalancement of material across participants (e.g. latin squar design), number of different lists can also be reported."
                             },
                             "word duration": {
                                 "$id": "#/properties/experiments/items/properties/procedure/properties/word%20duration",
-                                "type": "integer",
-                                "title": "The word duration schema",
-                                "description": "An explanation about the purpose of this instance."
+                                "type": "string",
+                                "title": "Word duration",
+                                "description": "The time in ms for which the words were presented. In case the duration was variable a textual description of duration estimates (e.g. mean minimum, maximum) can  be provided."
                             },
                             "woa": {
                                 "$id": "#/properties/experiments/items/properties/procedure/properties/woa",
                                 "type": "string",
-                                "title": "The woa schema",
-                                "description": "An explanation about the purpose of this instance."
+                                "title": "Word Onset Asyncrony",
+                                "description": "The time in ms that occured between the onset of a word and the onset of t0he following word (e.g. word duration plus interstimulus interval)."
                             },
                             "conditions": {
                                 "$id": "#/properties/experiments/items/properties/procedure/properties/conditions",
@@ -302,7 +303,12 @@
                                     "description": "A collection of informations about a specific experimental condition.",
                                     "additionalProperties": true,
                                     "required": [
-                                        "condname"
+                                        "condname",
+                                        "cp",
+                                        "items",
+                                        "description",
+                                        "example",
+                                        "wp"
                                     ],
                                     "properties": {
                                         "condname": {
@@ -310,6 +316,37 @@
                                             "type": "string",
                                             "title": "Condition label",
                                             "description": "A short and possibly informative label of the experimental condition."
+                                        }
+                                        ,
+                                        "cp": {
+                                            "$id": "#/properties/experiments/items/properties/procedure/properties/conditions/items/properties/cp",
+                                            "type": "string",
+                                            "title": "Cloze Probability",
+                                            "description": "The average cloze probability of the items in this condition, if available. In case an upper bound of the cloze probability is provided put this with a trailing minor sign (e.g. \"<0.05\"). A \"note on cp\" field can be added to give more information about how cp was estimated (e.g. number of participants in the pre-test) and possible measures of cp variability across items."
+                                        },
+                                        "items": {
+                                            "$id": "#/properties/experiments/items/properties/procedure/properties/conditions/items/properties/items",
+                                            "type": "number",
+                                            "title": "Number of items",
+                                            "description": "The numeber of items (words/sentences) which was presented in this condition to each subject. If it is variable add a \"note on items\" field."
+                                        },
+                                        "description": {
+                                            "$id": "#/properties/experiments/items/properties/procedure/properties/conditions/items/properties/description",
+                                            "type": "string",
+                                            "title": "Condition description",
+                                            "description": "A textual description of this experimental condition."
+                                        },
+                                        "example": {
+                                            "$id": "#/properties/experiments/items/properties/procedure/properties/conditions/items/properties/example",
+                                            "type": "string",
+                                            "title": "Sentence example",
+                                            "description": "If available provide an example of the sentence used in this experiment and condition by placing the target word  between asteriscs (e.g. \"He spread the butter with a *sock*\")."
+                                        },
+                                        "wp": {
+                                            "$id": "#/properties/experiments/items/properties/procedure/properties/conditions/items/properties/wp",
+                                            "type": "string",
+                                            "title": "Word Position",
+                                            "description": "A description of the word position in the sentence at which the ERPs were measured (e.g. \"target\", \"post target\", \"end of sentence\"."
                                         }
                                     }
                                 }
@@ -332,7 +369,10 @@
                                 "condition",
                                 "subjects",
                                 "time",
-                                "figure"
+                                "figure",
+                                "page",
+                                "color",
+                                "type"
                             ],
                             "properties": {
                                 "condition": {
