@@ -1,6 +1,5 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "https://raw.githubusercontent.com/francesco-vespignani/digERPs/master/templates/digERPs_frontalPNP.schema.json",
     "type": "object",
     "title": "A schema template for the systematic review frontalPNP",
     "description": "This is a proof of concept aimed to digitalize papers in table 2 of the paper by Van Petten and Luka (2012) Int. Jou. of Psychophy. 83, 176–190. In this review a number of ERPs papers on sentence processing are considered by looking at contrasts between higher- and lower-cloze congruent sentence completions.",
