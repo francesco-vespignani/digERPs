@@ -14,7 +14,10 @@
             "$id": "#/properties/paperid",
             "type": "string",
             "title": "paperid",
-            "description": "The id of the annotated paper, should be [last author family name][year of publication][first page]."
+            "description": "The id of the annotated paper, should be [last author family name][year of publication][first page].",
+		  "examples": [
+				"KUTAS1984161"
+		   ]
         },
         "experiments": {
             "$id": "#/properties/experiments",
@@ -263,7 +266,7 @@
                                 "$id": "#/properties/experiments/items/properties/procedure/properties/modality",
                                 "type": "string",
                                 "title": "Presentation modality",
-                                "description": "Modality of presentation of the stimuli, may be \"auditory\",  \"visual\" or \"unknown\".",
+                                "description": "Modality of presentation of the stimuli.",
                                 "enum": ["auditory", "visual", "unknown"]
                             },
                             "task": {
