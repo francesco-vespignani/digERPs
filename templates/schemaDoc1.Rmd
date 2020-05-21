@@ -1,0 +1,88 @@
+---
+title: "`r schema$title`"
+author: "`r author`"
+date: `r date()`
+geometry: margin=2cm
+output: pdf_document
+---
+
+
+`r schema$description`
+
+# Basic elements
+
+```{r paperid, results="asis", echo=FALSE}
+var = 'paperid'
+element = schema$properties$paperid
+catElement(var, element,1)
+
+var = 'experiments'
+element = schema$properties$experiments
+catElement(var, element,1)
+
+``` 
+
+# Structure of the elements of *Experiments*
+
+
+```{r exp, results="asis", echo=FALSE}
+
+sections = names(schema$properties$experiments$items$properties)
+req = sections %in% schema$properties$experiments$items$required
+for (i in 1:length(sections)) {
+	catElement(sections[i],schema$properties$experiments$items$properties[[i]], req[i])
+}
+
+```
+
+# *EEG*  section
+
+
+```{r eeg, results="asis", echo=FALSE}
+
+sections = names(schema$properties$experiments$items$properties$eeg$properties)
+req = sections %in% schema$properties$experiments$items$properties$eeg$required
+for (i in 1:length(sections)) {
+	catElementRec(sections[i],schema$properties$experiments$items$properties$eeg$properties[[i]],0, req[i])
+}
+
+```
+
+# *Subjects*  section
+
+
+```{r subjects, results="asis", echo=FALSE}
+
+sections = names(schema$properties$experiments$items$properties$subjects$items$properties)
+req = sections %in% schema$properties$experiments$items$properties$subjects$items$required
+for (i in 1:length(sections)) {
+	catElementRec(sections[i],schema$properties$experiments$items$properties$subjects$items$properties[[i]],0,req[i])
+}
+
+```
+
+
+# *Procedure*  section
+
+```{r procedure, results="asis", echo=FALSE}
+
+sections = names(schema$properties$experiments$items$properties$procedure$properties)
+req = sections %in% schema$properties$experiments$items$properties$procedure$required
+for (i in 1:length(sections)) {
+	catElementRec(sections[i],schema$properties$experiments$items$properties$procedure$properties[[i]],0,req[i])
+}
+
+```
+
+
+#  List of papers to be digitalized
+
+```{r generateBibliography, results="asis", echo=FALSE}
+for (i in 1:length(bib)) {
+	cat(paste('**',names(bib[i]),'**: ', sep=''))
+	print(bib[i], .opts=list(bib.style='authoryear'))
+	cat('\n')
+}
+``` 
+
+

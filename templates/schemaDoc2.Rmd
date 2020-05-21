@@ -1,0 +1,31 @@
+---
+title: "`r schema$title`"
+author: "`r author`"
+date: `r date()`
+geometry: margin=2cm
+output: pdf_document
+---
+
+`r schema$description`
+
+# Annotation schema
+
+```{r all, results="asis", echo=FALSE}
+
+sections = names(schema$properties)
+req = sections %in% schema$required
+for (i in 1:length(sections)) {
+	catElementRec(sections[i],schema$properties[[i]],0, req[i])
+}
+
+```
+
+#  List of papers to be digitalized
+
+```{r generateBibliography, results="asis", echo=FALSE}
+	cat(paste(paste('- **',names(apa),':**', sep=''), apa, sep =' '), sep='\n\n')
+``` 
+
+
+
+

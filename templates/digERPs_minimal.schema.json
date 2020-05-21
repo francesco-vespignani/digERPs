@@ -14,7 +14,10 @@
             "$id": "#/properties/paperid",
             "type": "string",
             "title": "paperid",
-            "description": "The id of the annotated paper, should be [last author family name][year of publication][first page]."
+            "description": "The id of the annotated paper, should be [last author family name][year of publication][first page].",
+		  "examples": [
+				"KUTAS1984161"
+		   ]
         },
         "experiments": {
             "$id": "#/properties/experiments",
