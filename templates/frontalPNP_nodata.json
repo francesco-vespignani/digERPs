@@ -1,5 +1,4 @@
 {
-  "$schema": "https://raw.githubusercontent.com/francesco-vespignani/digERPs/master/templates/digERPs_frontalPNP.schema.json",
   "paperid": "",
   "experiments": [
     {
@@ -43,7 +42,7 @@
           {
             "condname": "",
             "cp": "",
-            "items": "",
+            "items": 0,
             "description": "",
             "example":"",
             "wp": ""
