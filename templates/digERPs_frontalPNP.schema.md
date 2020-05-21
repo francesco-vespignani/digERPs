@@ -24,20 +24,11 @@ Papers typically contain multiple experiments, please add an element array for e
 
 
 > **experiments elements:** *[type= object]*: An Experiment
-
 > Specific annotations about the experiment.
-
-
 > > **expname** *[type= string]*: Name of the experiment **(required)**
-
 > > A label of the form exp[N], where N is an integer. We suggest to keep the original paper number, otherwise add a filed "note on name".
-
-
 > > **content** *[type= string]*: Experiment description
-
 > > A brief description of the experiment aims and possibly about its role within the aims of the specific secondary research that is currently pursued.
-
-
 > > **eeg** *[type= object]*: EEG Section **(required)**
 
 > > A collection of information about EEG recording and the analysis pipeline for ERPs extraction.
