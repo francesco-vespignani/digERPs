@@ -14,6 +14,7 @@ This is a proof of concept aimed to digitalize papers in table 2 of the paper by
 The id of the annotated paper, should be [last author family name][year of publication][first page].
 *Examples:*
 "KUTAS1984161"
+
 **experiments** *[type= array of object]*: An array of Experiments **(required)**
 Papers typically contain multiple experiments, please add an element array for each experiment, information about how to split data into experiments are refereed in the manual.
 > **experiments elements:** *[type= object]*: An Experiment
