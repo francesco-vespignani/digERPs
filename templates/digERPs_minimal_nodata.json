@@ -1,0 +1,34 @@
+[
+    {
+  	 "paperid": "",
+      "expname": "",
+      "content": "",
+      "eeg": {
+        "sites": [ "", ""]
+      },
+      "subjects": [
+        {
+          "groupname": ""
+        }
+      ],
+      "procedure": {
+        "conditions": [
+          {
+            "condname": ""
+          }
+        ]
+      },
+      "data": [
+        {
+          "condition": "",
+          "subjects": "",
+          "time": "",
+          "figure": "",
+		"figuredoi": "",
+          "page": "",
+          "color": "",
+          "type": ""
+        }
+      ]
+    }
+]

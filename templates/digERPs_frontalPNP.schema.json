@@ -1,439 +1,416 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "https://raw.githubusercontent.com/francesco-vespignani/digERPs/master/templates/digERPs_frontalPNP.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://raw.githubusercontent.com/francesco-vespignani/digERPs/master/templates/digERPs_minimal.schema.json",
+  "type": "array",
+  "title": "A schema template for the systematic review frontalPNP",
+  "description": "This is a proof of concept aimed to digitalize papers in table 2 of the paper by Van Petten and Luka (2012) Int. Jou. of Psychophy. 83, 176–190. In this review a number of ERPs papers on sentence processing are considered by looking at contrasts between higher- and lower-cloze congruent sentence completions. Papers typically contain multiple experiments, please add an element array for each experiment, in this case the field expname becomes required.",
+  "additionalItems": true,
+  "items": {
+    "$id": "#/items",
     "type": "object",
-    "title": "A schema template for the systematic review frontalPNP",
-    "description": "This is a proof of concept aimed to digitalize papers in table 2 of the paper by Van Petten and Luka (2012) Int. Jou. of Psychophy. 83, 176–190. In this review a number of ERPs papers on sentence processing are considered by looking at contrasts between higher- and lower-cloze congruent sentence completions.",
+    "title": "An Experiment",
+    "description": "Specific annotations about the experiment.",
     "additionalProperties": true,
     "required": [
-        "paperid",
-        "experiments"
+      "paperid",
+      "eeg",
+      "subjects",
+      "procedure",
+      "data"
     ],
     "properties": {
-        "paperid": {
-            "$id": "#/properties/paperid",
+      "paperid": {
+        "$id": "#/items/properties/paperid",
+        "type": "string",
+        "title": "paperid",
+        "description": "The id of the annotated paper, should be [last author family name][year of publication][first page].",
+        "examples": [
+          "KUTAS1984161"
+        ]
+      },
+      "expname": {
+        "$id": "#/items/properties/expname",
+        "type": "string",
+        "title": "Name of the experiment",
+        "description": "A label of the form exp[N], where N is an integer. We suggest to keep the original paper number, otherwise add a filed \"note on name\"."
+      },
+      "content": {
+        "$id": "#/items/properties/content",
+        "type": "string",
+        "title": "Experiment description",
+        "description": "A brief description of the experiment aims and possibly about its role within the aims of the specific secondary research that is currently pursued."
+      },
+      "eeg": {
+        "$id": "#/items/properties/eeg",
+        "type": "object",
+        "title": "EEG Section",
+        "description": "A collection of information about EEG recording and the analysis pipeline for ERPs extraction.",
+        "additionalProperties": true,
+        "required": [
+          "recording reference",
+          "sampling rate",
+          "final low pass",
+          "final high pass",
+          "epoch rejection",
+          "sites nomenclature",
+          "sites",
+          "baseline",
+          "epoch"
+        ],
+        "properties": {
+          "recording reference": {
+            "$id": "#/items/properties/eeg/properties/recording%20reference",
             "type": "string",
-            "title": "paperid",
-            "description": "The id of the annotated paper, should be [last author family name][year of publication][first page].",
-		  "examples": [
-				"KUTAS1984161"
-		   ]
-        },
-        "experiments": {
-            "$id": "#/properties/experiments",
+            "title": "Recording reference",
+            "description": "The EEG site used for reference electrode during recording (typical value are left/right/linked mastoids, average, Cz)."
+          },
+          "analysis reference": {
+            "$id": "#/items/properties/eeg/properties/analysis%20reference",
+            "type": "string",
+            "title": "Analysis reference",
+            "description": "Describe the analysis reference in the case a rereference was done otherwise leave this field blank."
+          },
+          "sampling rate": {
+            "$id": "#/items/properties/eeg/properties/sampling%20rate",
+            "type": "number",
+            "title": "Sampling rate",
+            "description": "Samplig rate of the EEG recording in Hz (number of EEG measures per second)."
+          },
+          "final Low Pass": {
+            "$id": "#/items/properties/eeg/properties/final%20low%20pass",
+            "type": "number",
+            "title": "Final Low Pass filter",
+            "description": "The cutoff frequency in Hz of the more severe low pass filter applied to the data prior to the plot."
+          },
+          "final High Pass": {
+            "$id": "#/items/properties/eeg/properties/final%20high%20pass",
+            "type": "number",
+            "title": "The final High Pass filter",
+            "description": "The cutoff frequency in Hz of the more severe high pass filter applied to the data prior to the plot."
+          },
+          "epoch rejection": {
+            "$id": "#/items/properties/eeg/properties/epoch%20rejection",
+            "type": "string",
+            "title": "Epoch rejection method",
+            "description": "A verbal description of the way the epoch rejection was performed: can be any of \"manual\", \"automatic\"or \"semiautomatic\" or it can be also a more in depth description including the specific parameters used in the procedure."
+          },
+          "mean rejected": {
+            "$id": "#/items/properties/eeg/properties/mean%20rejected",
+            "type": "number",
+            "title": "Mean rejected",
+            "description": "The proportion of trials removed by the artifact rejection procedure (across different conditions), should be a number between 0 and 1."
+          },
+          "sites nomenclature": {
+            "$id": "#/items/properties/eeg/properties/sites%20numenclature",
+            "type": "string",
+            "title": "Sites nomenclature",
+            "description": "A description of the standard used to label the channel/sites. In case of non standard sites put \"custom\" and add a filed \"note on sites\" with the original description of the position of the electrodes should be provided."
+          },
+          "sites": {
+            "$id": "#/items/properties/eeg/properties/sites",
             "type": "array",
-            "title": "An array of Experiments",
-            "description": "Papers typically contain multiple experiments, please add an element array for each experiment, information about how to split data into experiments are refereed in the manual.",
+            "title": "Recorded Sites",
+            "description": "An array of strings with the labels used in the paper figures of the recorded EEG sites/channels.",
             "additionalItems": true,
             "items": {
-                "$id": "#/properties/experiments/items",
-                "type": "object",
-                "title": "An Experiment",
-                "description": "Specific annotations about the experiment.",
-                "additionalProperties": true,
-                "required": [
-                    "expname",
-                    "eeg",
-                    "subjects",
-                    "procedure",
-                    "data"
-                ],
-                "properties": {
-                    "expname": {
-                        "$id": "#/properties/experiments/items/properties/expname",
-                        "type": "string",
-                        "title": "Name of the experiment",
-                        "description": "A label of the form exp[N], where N is an integer. We suggest to keep the original paper number, otherwise add a filed \"note on name\"."
-                    },
-                    "content": {
-                        "$id": "#/properties/experiments/items/properties/content",
-                        "type": "string",
-                        "title": "Experiment description",
-                        "description": "A brief description of the experiment aims and possibly about its role within the aims of the specific secondary research that is currently pursued."
-                    },
-                    "eeg": {
-                        "$id": "#/properties/experiments/items/properties/eeg",
-                        "type": "object",
-                        "title": "EEG Section",
-                        "description": "A collection of information about EEG recording and the analysis pipeline for ERPs extraction.",
-                        "additionalProperties": true,
-                        "required": [
-                            "recording reference",
-                            "sampling rate",
-                            "final Low Pass",
-                            "final High Pass",
-                            "epoch rejection",
-                            "mean rejected",
-                            "sites nomenclature",
-                            "sites",
-                            "sites 5%",
-                            "baseline",
-                            "epoch",
-                            "hardware",
-                            "active electrodes"
-                        ],
-                        "properties": {
-                            "recording reference": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/recording%20reference",
-                                "type": "string",
-                                "title": "Recording reference",
-                                "description": "The EEG site used for reference electrode during recording (typical value are left/right/linked mastoids, average, Cz)."
-                            },
-                            "analysis reference": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/analysis%20reference",
-                                "type": "string",
-                                "title": "Analysis reference",
-                                "description": "Describe the analysis reference in the case a rereference was done otherwise leave this field blank."
-                            },
-                            "sampling rate": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/sampling%20rate",
-                                "type": "number",
-                                "title": "Sampling rate",
-                                "description": "Samplig rate of the EEG recording in Hz (number of EEG measures per second)."
-                            },
-                            "final Low Pass": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/final%20Low%20Pass",
-                                "type": "number",
-                                "title": "Final Low Pass filter",
-                                "description": "The cutoff frequency in Hz of the more severe low pass filter applied to the data prior to the plot."
-                            },
-                            "final High Pass": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/final%20High%20Pass",
-                                "type": "number",
-                                "title": "The final High Pass filter",
-                                "description": "The cutoff frequency in Hz of the more severe high pass filter applied to the data prior to the plot."
-                            },
-                            "epoch rejection": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/epoch%20rejection",
-                                "type": "string",
-                                "title": "Epoch rejection method",
-                                "description": "A verbal description of the way the epoch rejection was performed: can be any of \"manual\", \"automatic\"or \"semiautomatic\" or it can be also a more in depth description including the specific parameters used in the procedure."
-                            },
-                            "mean rejected": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/mean%20rejected",
-                                "type": "number",
-                                "title": "Mean rejected",
-                                "description": "The proportion of trials removed by the artifact rejection procedure (across different conditions), should be a number between 0 and 1."
-                            },
-                            "sites nomenclature": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/sites%20numenclature",
-                                "type": "string",
-                                "title": "Sites nomenclature",
-                                "description": "A description of the standard used to label the channel/sites. In case of non standard sites put \"custom\" and add a filed \"note on sites\" with the original description of the position of the electrodes should be provided."
-                            },
-                            "sites": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/sites",
-                                "type": "array",
-                                "title": "Recorded Sites",
-                                "description": "An array of strings with the labels used in the paper figures of the recorded EEG sites/channels.",
-                                "additionalItems": true,
-                                "items": {
-                                    "$id": "#/properties/experiments/items/properties/eeg/properties/sites/items",
-                                    "type": "string",
-                                    "title": "Channel/site label",
-                                    "description": "Label of the channel/site."
-                                }
-                            },
-                            "sites 5%": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/sites%205%25",
-                                "type": "array",
-                                "title": "Sites 5%",
-                                "description": "In the case the paper does not use the standard nomenclature 5 per cent (or a subset of it like the 10-20) for each of the sites listed above the closest site in the 5 per cent standard should be provided. Otherwise leave this array empty.",
-                                "additionalItems": true,
-                                "items": {
-                                    "$id": "#/properties/experiments/items/properties/eeg/properties/standard%20sites/items",
-                                    "type": "string",
-                                    "title": "Channel/site standard label",
-                                    "description": "Standard label of the channel/site."
-                                }
-                            },
-                            "baseline": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/baseline",
-                                "type": "string",
-                                "title": "Baseline",
-                                "description": "The interval used for the baseline of the ERPs with reference to the onset of the critical word. It should in the form \"MIN, MAX\" in ms. In the case different baselines are used for different conditions or target words please add a field \"note on baseline\"."
-                            },
-                            "epoch": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/epoch",
-                                "type": "string",
-                                "title": "Epoch inteval",
-                                "description": "The epochs used of the ERPs extraction (may be larger than the plotted ones, time range plotted is reported in the data section) with reference to the onset of the critical word. It should in the form \"MIN, MAX\" in ms. In the case different epochs are used for different conditions or target words please add a field \"note on epoch\"."
-                            },
-                            "hardware": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/hardware",
-                                "type": "string",
-                                "title": "Hardware",
-                                "description": "A description of the EEG system used (recording device and optionally recording software)."
-                            },
-                            "active electrodes": {
-                                "$id": "#/properties/experiments/items/properties/eeg/properties/active%20electrodes",
-                                "type": "boolean",
-                                "title": "Active electrodes",
-                                "description": "Active electrodes  were used (true/false)"
-                            }
-                        }
-                    },
-                    "subjects": {
-                        "$id": "#/properties/experiments/items/properties/subjects",
-                        "type": "array",
-                        "title": "Subject Groups Section",
-                        "description": "An array with information about the groups of subjects tested.",
-                        "additionalItems": true,
-                        "items": {
-                            "$id": "#/properties/experiments/items/properties/subjects/items",
-                            "type": "object",
-                            "title": "A group of subjects",
-                            "description": "A collection of relevant information about a single group of subjects.",
-                            "additionalProperties": true,
-                            "required": [
-                                "groupname",
-                                "n",
-                                "mean age",
-                                "age range",
-                                "num of females",
-                                "language(s) spoken",
-                                "description"
-                            ],
-                            "properties": {
-                                "groupname": {
-                                    "$id": "#/properties/experiments/items/properties/subjects/items/properties/groupname",
-                                    "type": "string",
-                                    "title": "A label for this group",
-                                    "description": "A short and possibly informative label of the group of subjects"
-                                },
-                                "n": {
-                                    "$id": "#/properties/experiments/items/properties/subjects/items/properties/n",
-                                    "type": "integer",
-                                    "title": "Number of subjects",
-                                    "description": "An integer: the number of subject included in the final analysis. Put -1 if the information is not provided. If different subjects were used for different conditions or target words please add a field \"note on n\""
-                                },
-                                "mean age": {
-                                    "$id": "#/properties/experiments/items/properties/subjects/items/properties/mean%20age",
-                                    "type": "number",
-                                    "title": "Mean age",
-                                    "description": "Mean age of this group of subject in years. Put -1 if not provided."
-                                },
-                                "age range": {
-                                    "$id": "#/properties/experiments/items/properties/subjects/items/properties/age%20range",
-                                    "type": "string",
-                                    "title": "Age range",
-                                    "description": "Age range in the form \"MIN, MAX\" in years, leave empty if not provided."
-                                },
-                                "num of females": {
-                                    "$id": "#/properties/experiments/items/properties/subjects/items/properties/num%20of%20females",
-                                    "type": "integer",
-                                    "title": "Number of females",
-                                    "description": "The number of females in the sample,  put -1 if the information is not provided."
-                                },
-                                "language(s) spoken": {
-                                    "$id": "#/properties/experiments/items/properties/subjects/items/properties/language(s)%20spoken",
-                                    "type": "string",
-                                    "title": "Language(s) spoken",
-                                    "description": "First language of the subjects and possible information about further other language known, when provided."
-                                },
-                                "description": {
-                                    "$id": "#/properties/experiments/items/properties/subjects/items/properties/descrirption",
-                                    "type": "string",
-                                    "title": "Group Descrirption",
-                                    "description": "Report other information reported about the group (e.g. about vision, hearing capability, cognitive and neurological state)."
-                                }
-                            }
-                        }
-                    },
-                    "procedure": {
-                        "$id": "#/properties/experiments/items/properties/procedure",
-                        "type": "object",
-                        "title": "Experimental Procedure Section",
-                        "description": "A collection of information about the experimental procedure, including stimuli and behavioural tasks.",
-                        "additionalProperties": true,
-                        "required": [
-                            "language",
-                            "modality",
-                            "task",
-                            "lists",
-                            "word duration",
-                            "woa",
-                            "conditions"
-                        ],
-                        "properties": {
-                            "language": {
-                                "$id": "#/properties/experiments/items/properties/procedure/properties/language",
-                                "type": "string",
-                                "title": "Language of the stimuli",
-                                "description": "The language of the sentences or words presented to subjects during the experiment."
-                            },
-                            "modality": {
-                                "$id": "#/properties/experiments/items/properties/procedure/properties/modality",
-                                "type": "string",
-                                "title": "Presentation modality",
-                                "description": "Modality of presentation of the stimuli.",
-                                "enum": ["auditory", "visual", "unknown"]
-                            },
-                            "task": {
-                                "$id": "#/properties/experiments/items/properties/procedure/properties/task",
-                                "type": "string",
-                                "title": "Requested task",
-                                "description": "The behavioral task which subjects were requested to perform.",
-                                "examples": [
-                                    "silent reading", 
-                                    "reading for comprhension", 
-                                    "comprehension questions", 
-                                    "word monitoring"
-                                ]
-                            },
-                            "lists": {
-                                "$id": "#/properties/experiments/items/properties/procedure/properties/lists",
-                                "type": "string",
-                                "title": "Lists",
-                                "description": "A textual description of the type of counterbalancement of material across participants (e.g. latin squar design), number of different lists can also be reported."
-                            },
-                            "word duration": {
-                                "$id": "#/properties/experiments/items/properties/procedure/properties/word%20duration",
-                                "title": "Word duration",
-                                "description": "The time in ms for which the words were presented as a number. In case the duration was variable a textual description of duration estimates (e.g. mean minimum, maximum) can  be provided."
-                            },
-                            "woa": {
-                                "$id": "#/properties/experiments/items/properties/procedure/properties/woa",
-                                "title": "Word Onset Asyncrony",
-                                "description": "The time in ms that occured between the onset of a word and the onset of the following word (e.g. word duration plus interstimulus interval) as a number. In case it is variable provide a description string."
-                            },
-                            "conditions": {
-                                "$id": "#/properties/experiments/items/properties/procedure/properties/conditions",
-                                "type": "array",
-                                "title": "Experimental Conditions",
-                                "description": "An array with information about the tested experimental conditions.",
-                                "additionalItems": true,
-                                "items": {
-                                    "$id": "#/properties/experiments/items/properties/procedure/properties/conditions/items",
-                                    "type": "object",
-                                    "title": "An Experimental Condition",
-                                    "description": "A collection of informations about a specific experimental condition.",
-                                    "additionalProperties": true,
-                                    "required": [
-                                        "condname",
-                                        "cp",
-                                        "items",
-                                        "description",
-                                        "example",
-                                        "wp"
-                                    ],
-                                    "properties": {
-                                        "condname": {
-                                            "$id": "#/properties/experiments/items/properties/procedure/properties/conditions/items/properties/condname",
-                                            "type": "string",
-                                            "title": "Condition label",
-                                            "description": "A short and possibly informative label of the experimental condition."
-                                        }
-                                        ,
-                                        "cp": {
-                                            "$id": "#/properties/experiments/items/properties/procedure/properties/conditions/items/properties/cp",
-                                            "title": "Cloze Probability",
-                                            "description": "Fill with a number if the average cloze probability of the items in this condition, if available. In case an upper bound of the cloze probability is provided put this with a trailing minor sign (e.g. \"<0.05\"). A \"note on cp\" field can be added to give more information about how cp was estimated (e.g. number of participants in the pre-test) and possible measures of cp variability across items."
-                                        },
-                                        "items": {
-                                            "$id": "#/properties/experiments/items/properties/procedure/properties/conditions/items/properties/items",
-                                            "type": "number",
-                                            "title": "Number of items",
-                                            "description": "The numeber of items (words/sentences) which was presented in this condition to each subject. If it is variable add a \"note on items\" field."
-                                        },
-                                        "description": {
-                                            "$id": "#/properties/experiments/items/properties/procedure/properties/conditions/items/properties/description",
-                                            "type": "string",
-                                            "title": "Condition description",
-                                            "description": "A textual description of this experimental condition."
-                                        },
-                                        "example": {
-                                            "$id": "#/properties/experiments/items/properties/procedure/properties/conditions/items/properties/example",
-                                            "type": "string",
-                                            "title": "Sentence example",
-                                            "description": "If available provide an example of the sentence used in this experiment and condition by placing the target word  between asteriscs (e.g. \"He spread the butter with a *sock*\")."
-                                        },
-                                        "wp": {
-                                            "$id": "#/properties/experiments/items/properties/procedure/properties/conditions/items/properties/wp",
-                                            "type": "string",
-                                            "title": "Word Position",
-                                            "description": "A description of the word position in the sentence at which the ERPs were measured (e.g. \"target\", \"post target\", \"end of sentence\"."
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "data": {
-                        "$id": "#/properties/experiments/items/properties/data",
-                        "type": "array",
-                        "title": "Data section",
-                        "description": "An array of entries corresponding to plotted waveforms with information about where these can be found.",
-                        "additionalItems": true,
-                        "items": {
-                            "$id": "#/properties/experiments/items/properties/data/items",
-                            "type": "object",
-                            "title": "Waveforms",
-                            "description": "Information relative to a group of waveforms pertaining to a pool of sites/channel but to a signle condition and group of subjects. Sites will be a subset of the above field in the eeg section, otherwise add a field \"note on sites\"",
-                            "additionalProperties": true,
-                            "required": [
-                                "condition",
-                                "subjects",
-                                "time",
-                                "figure",
-                                "page",
-                                "color",
-                                "type"
-                            ],
-                            "properties": {
-                                "condition": {
-                                    "$id": "#/properties/experiments/items/properties/data/items/properties/condition",
-                                    "type": "string",
-                                    "title": "Condition label",
-                                    "description": "An condition label instantiated above in the procedure section."
-                                },
-                                "subjects": {
-                                        "$id": "#/properties/experiments/items/properties/data/items/properties/subjects",
-                                        "type": "string",
-                                        "title": "Group label",
-                                        "description": "An subject-group label instantiated above in the subjects section."
-                                    },
-                                "time": {
-                                    "$id": "#/properties/experiments/items/properties/data/items/properties/time",
-                                    "type": "string",
-                                    "title": "Time Range",
-                                    "description": "The (maximum) time range of the plotted data,  should be in the form \"MIN, MAX\"."
-                                },
-                                "figure": {
-                                    "$id": "#/properties/experiments/items/properties/data/items/properties/figure",
-                                    "type": "string",
-                                    "title": "Figure label",
-                                    "description": "A short label for the  figure from which the specific waveform should be extracted. Should be in the form \"fig[N][A]\", where N  in an integer and A an optional letter (e.g. \"fig1A\").  This label should match both the description in the paper and the name of the image file to be used for the digitalization (e.g \"fig1A.png\"."
-                                },
-                                "figuredoi": {
-                                    "$id": "#/properties/experiments/items/properties/data/items/properties/figuredoi",
-                                    "type": "string",
-                                    "title": "Figure doi",
-                                    "description": "A doi for the specific figure,  if available."
-                                },
-                                "page": {
-                                    "$id": "#/properties/experiments/items/properties/data/items/properties/page",
-                                    "type": "string",
-                                    "title": "Page number",
-                                    "description": "The number of the page in which the figure appears."
-                                },
-                                "color": {
-                                    "$id": "#/properties/experiments/items/properties/data/items/properties/color",
-                                    "type": "string",
-                                    "title": "Line color",
-                                    "description": "A verbal description of the color in which the waveform appears in the plot."
-                                },
-                                "type": {
-                                    "$id": "#/properties/experiments/items/properties/data/items/properties/type",
-                                    "type": "string",
-                                    "title": "Line  type",
-                                    "description": "A verbal description of the graphic type of the line (e.g. continuous, dashed, dotted ...)."
-                                }
-                            }
-                        }
-                    }
-                }
+              "$id": "#/items/properties/eeg/properties/sites/items",
+              "type": "string",
+              "title": "Channel/site label",
+              "description": "Label of the channel/site."
             }
+          },
+          "sites 5%": {
+            "$id": "#/items/properties/eeg/properties/sites%205%25",
+            "type": "array",
+            "title": "Sites 5%",
+            "description": "In the case the paper does not use the standard nomenclature 5 per cent (or a subset of it like the 10-20) for each of the sites listed above the closest site in the 5 per cent standard should be provided. Otherwise leave this array empty.",
+            "additionalItems": true,
+            "items": {
+              "$id": "#/items/properties/eeg/properties/standard%20sites/items",
+              "type": "string",
+              "title": "Channel/site standard label",
+              "description": "Standard label of the channel/site."
+            }
+          },
+          "baseline": {
+            "$id": "#/items/properties/eeg/properties/baseline",
+            "type": "string",
+            "title": "Baseline",
+            "description": "The interval used for the baseline of the ERPs with reference to the onset of the critical word. It should in the form \"MIN, MAX\" in ms. In the case different baselines are used for different conditions or target words please add a field \"note on baseline\"."
+          },
+          "epoch": {
+            "$id": "#/items/properties/eeg/properties/epoch",
+            "type": "string",
+            "title": "Epoch inteval",
+            "description": "The epochs used of the ERPs extraction (may be larger than the plotted ones, time range plotted is reported in the data section) with reference to the onset of the critical word. It should in the form \"MIN, MAX\" in ms. In the case different epochs are used for different conditions or target words please add a field \"note on epoch\"."
+          },
+          "hardware": {
+            "$id": "#/items/properties/eeg/properties/hardware",
+            "type": "string",
+            "title": "Hardware",
+            "description": "A description of the EEG system used (recording device and optionally recording software)."
+          },
+          "active electrodes": {
+            "$id": "#/items/properties/eeg/properties/active%20electrodes",
+            "type": "boolean",
+            "title": "Active electrodes",
+            "description": "Active electrodes  were used (true/false)"
+          }
         }
+      },
+      "subjects": {
+        "$id": "#/items/properties/subjects",
+        "type": "array",
+        "title": "Subject Groups Section",
+        "description": "An array with information about the groups of subjects tested.",
+        "additionalItems": true,
+        "items": {
+          "$id": "#/items/properties/subjects/items",
+          "type": "object",
+          "title": "A group of subjects",
+          "description": "A collection of relevant information about a single group of subjects.",
+          "additionalProperties": true,
+          "required": [
+            "groupname",
+            "n",
+            "language(s) spoken",
+            "description"
+          ],
+          "properties": {
+            "groupname": {
+              "$id": "#/items/properties/subjects/items/properties/groupname",
+              "type": "string",
+              "title": "A label for this group",
+              "description": "A short and possibly informative label of the group of subjects"
+            },
+            "n": {
+              "$id": "#/items/properties/subjects/items/properties/n",
+              "type": "integer",
+              "title": "Number of subjects",
+              "description": "An integer: the number of subject included in the final analysis. Put -1 if the information is not provided. If different subjects were used for different conditions or target words please add a field \"note on n\""
+            },
+            "mean age": {
+              "$id": "#/items/properties/subjects/items/properties/mean%20age",
+              "type": "number",
+              "title": "Mean age",
+              "description": "Mean age of this group of subject in years. Put -1 if not provided."
+            },
+            "age range": {
+              "$id": "#/items/properties/subjects/items/properties/age%20range",
+              "type": "string",
+              "title": "Age range",
+              "description": "Age range in the form \"MIN, MAX\" in years, leave empty if not provided."
+            },
+            "num of females": {
+              "$id": "#/items/properties/subjects/items/properties/num%20of%20females",
+              "type": "integer",
+              "title": "Number of females",
+              "description": "The number of females in the sample,  put -1 if the information is not provided."
+            },
+            "language(s) spoken": {
+              "$id": "#/items/properties/subjects/items/properties/language(s)%20spoken",
+              "type": "string",
+              "title": "Language(s) spoken",
+              "description": "First language of the subjects and possible information about further other language known, when provided."
+            },
+            "description": {
+              "$id": "#/items/properties/subjects/items/properties/descrirption",
+              "type": "string",
+              "title": "Group Descrirption",
+              "description": "Report other information reported about the group (e.g. about vision, hearing capability, cognitive and neurological state)."
+            }
+          }
+        }
+      },
+      "procedure": {
+        "$id": "#/items/properties/procedure",
+        "type": "object",
+        "title": "Experimental Procedure Section",
+        "description": "A collection of information about the experimental procedure, including stimuli and behavioural tasks.",
+        "additionalProperties": true,
+        "required": [
+          "language",
+          "modality",
+          "task",
+          "conditions"
+        ],
+        "properties": {
+          "language": {
+            "$id": "#/items/properties/procedure/properties/language",
+            "type": "string",
+            "title": "Language of the stimuli",
+            "description": "The language of the sentences or words presented to subjects during the experiment."
+          },
+          "modality": {
+            "$id": "#/items/properties/procedure/properties/modality",
+            "type": "string",
+            "title": "Presentation modality",
+            "description": "Modality of presentation of the stimuli.",
+            "enum": [
+              "auditory",
+              "visual",
+              "unknown"
+            ]
+          },
+          "task": {
+            "$id": "#/items/properties/procedure/properties/task",
+            "type": "string",
+            "title": "Requested task",
+            "description": "The behavioral task which subjects were requested to perform.",
+            "examples": [
+              "silent reading",
+              "reading for comprhension",
+              "comprehension questions",
+              "word monitoring"
+            ]
+          },
+          "lists": {
+            "$id": "#/items/properties/procedure/properties/lists",
+            "type": "string",
+            "title": "Lists",
+            "description": "A textual description of the type of counterbalancement of material across participants (e.g. latin squar design), number of different lists can also be reported."
+          },
+          "word duration": {
+            "$id": "#/items/properties/procedure/properties/word%20duration",
+            "title": "Word duration",
+            "description": "The time in ms for which the words were presented as a number. In case the duration was variable a textual description of duration estimates (e.g. mean minimum, maximum) can  be provided."
+          },
+          "woa": {
+            "$id": "#/items/properties/procedure/properties/woa",
+            "title": "Word Onset Asyncrony",
+            "description": "The time in ms that occured between the onset of a word and the onset of the following word (e.g. word duration plus interstimulus interval) as a number. In case it is variable provide a description string."
+          },
+          "conditions": {
+            "$id": "#/items/properties/procedure/properties/conditions",
+            "type": "array",
+            "title": "Experimental Conditions",
+            "description": "An array with information about the tested experimental conditions.",
+            "additionalItems": true,
+            "items": {
+              "$id": "#/items/properties/procedure/properties/conditions/items",
+              "type": "object",
+              "title": "An Experimental Condition",
+              "description": "A collection of informations about a specific experimental condition.",
+              "additionalProperties": true,
+              "required": [
+                "condname",
+                "cp",
+                "items",
+                "description"
+              ],
+              "properties": {
+                "condname": {
+                  "$id": "#/items/properties/procedure/properties/conditions/items/properties/condname",
+                  "type": "string",
+                  "title": "Condition label",
+                  "description": "A short and possibly informative label of the experimental condition."
+                },
+                "cp": {
+                  "$id": "#/items/properties/procedure/properties/conditions/items/properties/cp",
+                  "title": "Cloze Probability",
+                  "description": "Fill with a number if the average cloze probability of the items in this condition, if available. In case an upper bound of the cloze probability is provided put this with a trailing minor sign (e.g. \"<0.05\"). A \"note on cp\" field can be added to give more information about how cp was estimated (e.g. number of participants in the pre-test) and possible measures of cp variability across items."
+                },
+                "items": {
+                  "$id": "#/items/properties/procedure/properties/conditions/items/properties/items",
+                  "type": "number",
+                  "title": "Number of items",
+                  "description": "The numeber of items (words/sentences) which was presented in this condition to each subject. If it is variable add a \"note on items\" field."
+                },
+                "description": {
+                  "$id": "#/items/properties/procedure/properties/conditions/items/properties/description",
+                  "type": "string",
+                  "title": "Condition description",
+                  "description": "A textual description of this experimental condition."
+                },
+                "example": {
+                  "$id": "#/items/properties/procedure/properties/conditions/items/properties/example",
+                  "type": "string",
+                  "title": "Sentence example",
+                  "description": "If available provide an example of the sentence used in this experiment and condition by placing the target word  between asteriscs (e.g. \"He spread the butter with a *sock*\")."
+                },
+                "wp": {
+                  "$id": "#/items/properties/procedure/properties/conditions/items/properties/wp",
+                  "type": "string",
+                  "title": "Word Position",
+                  "description": "A description of the word position in the sentence at which the ERPs were measured (e.g. \"target\", \"post target\", \"end of sentence\"."
+                }
+              }
+            }
+          }
+        }
+      },
+      "data": {
+        "$id": "#/items/properties/data",
+        "type": "array",
+        "title": "Data section",
+        "description": "An array of entries corresponding to plotted waveforms with information about where these can be found.",
+        "additionalItems": true,
+        "items": {
+          "$id": "#/items/properties/data/items",
+          "type": "object",
+          "title": "Waveforms",
+          "description": "Information relative to a group of waveforms pertaining to a pool of sites/channel but to a signle condition and group of subjects. Sites will be a subset of the above field in the eeg section, otherwise add a field \"note on sites\"",
+          "additionalProperties": true,
+          "required": [
+            "condition",
+            "subjects",
+            "time",
+            "figure",
+            "color",
+            "type"
+          ],
+          "properties": {
+            "condition": {
+              "$id": "#/items/properties/data/items/properties/condition",
+              "type": "string",
+              "title": "Condition label",
+              "description": "An condition label instantiated above in the procedure section."
+            },
+            "subjects": {
+              "$id": "#/items/properties/data/items/properties/subjects",
+              "type": "string",
+              "title": "Group label",
+              "description": "An subject-group label instantiated above in the subjects section."
+            },
+            "time": {
+              "$id": "#/items/properties/data/items/properties/time",
+              "type": "string",
+              "title": "Time Range",
+              "description": "The (maximum) time range of the plotted data,  should be in the form \"MIN, MAX\"."
+            },
+            "figure": {
+              "$id": "#/items/properties/data/items/properties/figure",
+              "type": "string",
+              "title": "Figure label",
+              "description": "A short label for the  figure from which the specific waveform should be extracted. Should be in the form \"fig[N][A]\", where N  in an integer and A an optional letter (e.g. \"fig1A\").  This label should match both the description in the paper and the name of the image file to be used for the digitalization (e.g \"fig1A.png\"."
+            },
+            "figuredoi": {
+              "$id": "#/items/properties/data/items/properties/figuredoi",
+              "type": "string",
+              "title": "Figure doi",
+              "description": "A doi for the specific figure,  if available."
+            },
+            "page": {
+              "$id": "#/items/properties/data/items/properties/page",
+              "type": "string",
+              "title": "Page number",
+              "description": "The number of the page in which the figure appears."
+            },
+            "color": {
+              "$id": "#/items/properties/data/items/properties/color",
+              "type": "string",
+              "title": "Line color",
+              "description": "A verbal description of the color in which the waveform appears in the plot."
+            },
+            "type": {
+              "$id": "#/items/properties/data/items/properties/type",
+              "type": "string",
+              "title": "Line  type",
+              "description": "A verbal description of the graphic type of the line (e.g. continuous, dashed, dotted ...)."
+            }
+          }
+        }
+      }
     }
+  }
 }

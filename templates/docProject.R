@@ -18,14 +18,14 @@ catElement <- function(var, element, req=0) {
 	} else {
 		cat(paste(': ',element$title,'\n\n', sep=''))
 	}
-	cat(paste(element$description,'\n', sep=''))
+	cat(paste(element$description,'\n\n', sep=''))
 	if ( any (names(element)== "enum") ) {
-		cat(paste(prefix,'*Possible values:*','\n\n', sep=''))
+		cat(paste('*Possible values:*','\n\n', sep=''))
 		cat(paste('\"',element$enum, '\"', sep=''), sep=', ')
 		cat('\n\n')
 	}
 	if ( any (names(element)== "examples") ) {
-		cat(paste(prefix,'*Examples:*','\n\n', sep=''))
+		cat(paste('*Examples:*','\n\n', sep=''))
 		cat(paste('\"',element$examples, '\"', sep=''), sep=', ')
 		cat('\n\n')
 	}
@@ -58,20 +58,20 @@ catElementRec <- function(var, element, level, req=0) {
 		}
 	}
 	if(req) {
-		cat(paste(': ',element$title,' **(required)**\n\n', sep=''))
+		cat(paste(': ',element$title,' **(required)**\n',prefix,'\n', sep=''))
 	} else {
-		cat(paste(': ',element$title,'\n\n', sep=''))
+		cat(paste(': ',element$title,'\n',prefix,'\n', sep=''))
 	}
-	cat(paste(prefix, element$description,'\n\n', sep=''))
+	cat(paste(prefix, element$description,'\n',prefix,'\n', sep=''))
 	if ( any (names(element)== "enum") ) {
 		cat(paste(prefix,'*Possible values:*','\n', sep=''))
 		cat(paste('\"',element$enum, '\"', sep=''), sep=', ')
-		cat('\n\n')
+		cat(paste('\n',prefix,'\n', sep=''))
 	}
 	if ( any (names(element)== "examples") ) {
 		cat(paste(prefix,'*Examples:*','\n', sep=''))
 		cat(paste('\"',element$examples, '\"', sep=''), sep=', ')
-		cat('\n\n')
+		cat(paste('\n',prefix,'\n', sep=''))
 	}
 	if (rec) {
 		if(isobj) {
@@ -83,10 +83,10 @@ catElementRec <- function(var, element, level, req=0) {
 		} else {
 			catElementRec(nvar, nel, level+1)
 		}
+	} else {
+		cat('\n')
 	}
 }
-
-
 
 example <- function () {
 #schema = fromJSON(readLines('digERPs_minimal.schema.json'))
@@ -110,8 +110,8 @@ author = ""
 bib = ReadBib(paste(name,'.bib', sep=''))
 apa = cr_cn(bib[]$doi, 'text','apa')
 
-knit('schemaDoc2.Rmd')
-system(paste('pandoc schemaDoc2.md -o digERPs_',name,'.schema.pdf', sep=''))
-system(paste('cp schemaDoc2.md digERPs_',name,'.schema.md', sep=''))
+knit('schemaDoc1.Rmd')
+system(paste('pandoc schemaDoc1.md -o digERPs_',name,'.schema.pdf', sep=''))
+system(paste('mv schemaDoc1.md digERPs_',name,'.schema.md', sep=''))
 
 }

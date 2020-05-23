@@ -9,67 +9,75 @@ output: pdf_document
 
 `r schema$description`
 
-# Basic elements
+# Description of the annotation schema
 
-```{r paperid, results="asis", echo=FALSE}
-var = 'paperid'
-element = schema$properties$paperid
-catElement(var, element,1)
+Annotators can add further information they think require some attention
+by adding further fields. These extra fields should start with \"note\".
 
-var = 'experiments'
-element = schema$properties$experiments
-catElement(var, element,1)
+## Basic elements
 
-``` 
+```{r basic, results="asis", echo=FALSE}
 
-# Structure of the elements of *Experiments*
-
-
-```{r exp, results="asis", echo=FALSE}
-
-sections = names(schema$properties$experiments$items$properties)
-req = sections %in% schema$properties$experiments$items$required
+sections = names(schema$items$properties)
+req = sections %in% schema$item$required
 for (i in 1:length(sections)) {
-	catElement(sections[i],schema$properties$experiments$items$properties[[i]], req[i])
+	catElement(sections[i],schema$items$properties[[i]],1)
 }
 
 ```
 
-# *EEG*  section
+## EEG  section
 
+An object with the following fields:
 
 ```{r eeg, results="asis", echo=FALSE}
 
-sections = names(schema$properties$experiments$items$properties$eeg$properties)
-req = sections %in% schema$properties$experiments$items$properties$eeg$required
+sections = names(schema$items$properties$eeg$properties)
+req = sections %in% schema$items$properties$eeg$required
 for (i in 1:length(sections)) {
-	catElementRec(sections[i],schema$properties$experiments$items$properties$eeg$properties[[i]],0, req[i])
+	catElementRec(sections[i],schema$items$properties$eeg$properties[[i]],0, req[i])
 }
 
 ```
 
-# *Subjects*  section
+## Subjects  section
 
+An array of objects with the following fields:
 
 ```{r subjects, results="asis", echo=FALSE}
 
-sections = names(schema$properties$experiments$items$properties$subjects$items$properties)
-req = sections %in% schema$properties$experiments$items$properties$subjects$items$required
+sections = names(schema$items$properties$subjects$items$properties)
+req = sections %in% schema$items$properties$subjects$items$required
 for (i in 1:length(sections)) {
-	catElementRec(sections[i],schema$properties$experiments$items$properties$subjects$items$properties[[i]],0,req[i])
+	catElementRec(sections[i],schema$items$properties$subjects$items$properties[[i]],0,req[i])
 }
 
 ```
 
+## Procedure  section
 
-# *Procedure*  section
+An object with the following fields:
 
 ```{r procedure, results="asis", echo=FALSE}
 
-sections = names(schema$properties$experiments$items$properties$procedure$properties)
-req = sections %in% schema$properties$experiments$items$properties$procedure$required
+sections = names(schema$items$properties$procedure$properties)
+req = sections %in% schema$items$properties$procedure$required
 for (i in 1:length(sections)) {
-	catElementRec(sections[i],schema$properties$experiments$items$properties$procedure$properties[[i]],0,req[i])
+	catElementRec(sections[i],schema$items$properties$procedure$properties[[i]],0,req[i])
+}
+
+```
+
+## Data  section
+
+An array of objects with the following fields
+
+```{r data, results="asis", echo=FALSE}
+
+sections = names(schema$items$properties$data$items$properties)
+req = sections %in% schema$items$properties$data$items$required
+for (i in 1:length(sections)) {
+	catElementRec(sections[i],schema$items$properties$data$items$properties[[i]],0,req[i])
 }
 
 ```

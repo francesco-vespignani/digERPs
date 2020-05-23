@@ -12,10 +12,10 @@ output: pdf_document
 
 ```{r all, results="asis", echo=FALSE}
 
-sections = names(schema$properties)
-req = sections %in% schema$required
+sections = names(schema$items$properties)
+req = sections %in% schema$item$required
 for (i in 1:length(sections)) {
-	catElementRec(sections[i],schema$properties[[i]],0, req[i])
+	catElementRec(sections[i],schema$items$properties[[i]],1, req[i])
 }
 
 ```
