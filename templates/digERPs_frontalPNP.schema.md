@@ -1,7 +1,7 @@
 ---
 title: "A schema template for the systematic review frontalPNP"
 author: ""
-date: Sat May 23 17:28:21 2020
+date: Sat May 23 17:33:32 2020
 geometry: margin=2cm
 output: pdf_document
 ---
@@ -67,12 +67,12 @@ Describe the analysis reference in the case a rereference was done otherwise lea
 Samplig rate of the EEG recording in Hz (number of EEG measures per second).
 
 
-**final Low Pass** *[type= number]*: Final Low Pass filter
+**final low pass** *[type= number]*: Final Low Pass filter **(required)**
 
 The cutoff frequency in Hz of the more severe low pass filter applied to the data prior to the plot.
 
 
-**final High Pass** *[type= number]*: The final High Pass filter
+**final high pass** *[type= number]*: Final High Pass filter **(required)**
 
 The cutoff frequency in Hz of the more severe high pass filter applied to the data prior to the plot.
 

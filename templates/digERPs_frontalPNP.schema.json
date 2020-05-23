@@ -76,16 +76,16 @@
             "title": "Sampling rate",
             "description": "Samplig rate of the EEG recording in Hz (number of EEG measures per second)."
           },
-          "final Low Pass": {
+          "final low pass": {
             "$id": "#/items/properties/eeg/properties/final%20low%20pass",
             "type": "number",
             "title": "Final Low Pass filter",
             "description": "The cutoff frequency in Hz of the more severe low pass filter applied to the data prior to the plot."
           },
-          "final High Pass": {
+          "final high pass": {
             "$id": "#/items/properties/eeg/properties/final%20high%20pass",
             "type": "number",
-            "title": "The final High Pass filter",
+            "title": "Final High Pass filter",
             "description": "The cutoff frequency in Hz of the more severe high pass filter applied to the data prior to the plot."
           },
           "epoch rejection": {
