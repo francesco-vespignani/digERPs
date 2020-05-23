@@ -1,11 +1,4 @@
----
-title: "A schema template for the systematic review frontalPNP"
-author: ""
-date: Sat May 23 17:33:32 2020
-geometry: margin=2cm
-output: pdf_document
----
-
+# A schema template for the systematic review frontalPNP
 
 This is a proof of concept aimed to digitalize papers in table 2 of the paper by Van Petten and Luka (2012) Int. Jou. of Psychophy. 83, 176–190. In this review a number of ERPs papers on sentence processing are considered by looking at contrasts between higher- and lower-cloze congruent sentence completions. Papers typically contain multiple experiments, please add an element array for each experiment, in this case the field expname becomes required.
 
