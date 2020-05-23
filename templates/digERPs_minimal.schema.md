@@ -1,11 +1,4 @@
----
-title: "A minimal schema template for digERPs"
-author: ""
-date: Sat May 23 17:28:40 2020
-geometry: margin=2cm
-output: pdf_document
----
-
+# A minimal schema template for digERPs
 
 This is a minimal schema template for json annotation of scientific papers within the digERPs project. Papers typically contain multiple experiments, please add an element array for each experiment, in this case the field expname becomes required.
 
