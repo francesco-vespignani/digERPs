@@ -14,4 +14,10 @@ for the compilation of the json annotation file of a specific paper.
 Tested editors:
 
 [JSON Editor online](https://jsoneditoronline.org)
+
 [Visual Studio Code](https://code.visualstudio.com/)
+
+Codes:
+
+docProject.R and schemaDoc1.Rmd allow to create the documentation of newly implemented schema
+on the basis of the schema.json file and of the respective bibliography. 
