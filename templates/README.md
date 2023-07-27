@@ -13,9 +13,9 @@ for the compilation of the json annotation file of a specific paper.
 
 Tested editors:
 
-[JSON Editor online](https://jsoneditoronline.org)
+[JSON Editor online (classic)](https://jsoneditoronline.org/classic/index.html)
 
-[Visual Studio Code](https://code.visualstudio.com/)
+[Visual Studio Code](https://code.visualstudio.om/)
 
 Codes:
 
