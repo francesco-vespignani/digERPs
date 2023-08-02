@@ -15,7 +15,7 @@ Tested editors:
 
 [JSON Editor online (classic)](https://jsoneditoronline.org/classic/index.html)
 
-[Visual Studio Code](https://code.visualstudio.om/)
+[Visual Studio Code](https://code.visualstudio.com/)
 
 Codes:
 
